@@ -1,19 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import FacebookLogin from "react-facebook-login";
 
 class App extends Component {
+  state = {
+    response: "",
+    event: ""
+  };
+
+  responseFacebook = response => {
+    console.log(response);
+  };
+
+  componentClicked = event => {};
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <center>
+        <FacebookLogin
+          size="medium"
+          appId="135019927149197"
+          autoLoad={true}
+          fields="name,email,picture"
+          onClick={this.componentClicked}
+          callback={this.responseFacebook}
+          icon="fa-facebook"
+          language="th_TH"
+        />
+      </center>
     );
   }
 }
